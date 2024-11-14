@@ -26,10 +26,16 @@ export default function FindMovie() {
         return <p>{error}</p>
     }   
     
+    if(movies.length <= 0) {
+        return <p>No movies were found with {title}</p>
+    }
+    
     return (
         <>
-            <h2>Search Results for "{title}"</h2>
-            <MovieList movies={movies} title={'Search Results'} />
+        <section className='flex flex-col  h-fit mt-10 text-white'>
+            <MovieList movies={movies} title={`Search Results for "${title}":`} />
+        </section>
+            
         </>
 
     )

@@ -8,6 +8,7 @@ const userSchema = new Schema({
     password: {type: String, require: true},
     email: {type: String, require: true, unique: true},
     movies: [{type: mongoose.Types.ObjectId, require: true, default: [], ref: 'Movie'}]
+    
 
 });
 

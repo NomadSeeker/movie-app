@@ -1,34 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Carousel from './Carousel';
+
 import '../style/movieStyle.css';
 
 const MovieList = ({movies, title}) => {
 
     return (
-        <div>
-            <div className='text-center my-4'>
-                <h1 className='uppercase tracking-widest font-mono text-3xl'>{title}</h1>
+        <div className='my-14'>
+            <div className='text-left my-2'>
+                <h1 className='lg:tracking-widest font-mono text-l md:text-2xl text-white text-nowrap ml-5'>{title}</h1>
             </div>
+
+            <div className='carousl'>
+                <Carousel movies={movies}/>
+            </div>
+            
            
-                <div className={`grid grid-rows-${movies.length} grid-cols-1 sm:grid-cols-2 md:grid-cols-4 `} >
-
-                    {movies.map((movie, index) => (
-                        <div key={movie._id} className='container my-2'>
-                     
-                            <Link to={`/movie/${movie._id}`}>
-      
-                                <img style={{width: '130px', height: '180px'}} className='mx-auto my-5 transition ease-in-out  hover:-translate-y-3 hover:scale-110 duration-300'  src={movie.poster_path} alt='movie poster' />
-                                {movie.title}
-
-                            </Link>
-                            
-                       
-                        </div>
-                    ))}
-
-                    
-                </div>
                 
            
         </div>

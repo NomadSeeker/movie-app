@@ -16,15 +16,15 @@ import './App.css';
 function App() {
 
   return (
-    <div className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 '>
-       <div className="App container mx-auto px-4 py-3 ">
+    <div className='bg-slate-800 '>
+       <div className="App  mx-auto md:px-4 md:py-3 ">
       
       <Router>
         <Header />
         <Routes>
           <Route path='/myFavorites' element={<FavoriteMovies />} />
           <Route path='/' 
-            element={<Home  />} 
+            element={<Home />} 
           />
           <Route path='/movie/:id' element={<MovieDetails />} />
           <Route path='/findMovie/:title' element={<FindMovie />} />

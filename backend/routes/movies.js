@@ -13,8 +13,9 @@ router.get('/favoriteMovies/:uid', moviesController.getMoviesByUserId);
 //save a movie to the user's favorites
 router.post('/saveFavoriteMovie', [
     check('title').not().isEmpty(),
-    check('release_date').not().isEmpty(),
-    check('genre').not().isEmpty()
+    check('movieId').not().isEmpty(),
+    check('poster_path').not().isEmpty(),
+    check('userId').not().isEmpty()
 ], moviesController.saveMovie);
 
 router.delete('/deleteFavoriteMovie/:mid', moviesController.deleteFavoriteMovie);

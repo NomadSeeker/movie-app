@@ -1,3 +1,33 @@
+:root {
+  box-sizing: border-box;
+  --width-input-border: 2px;
+  --radius-inputs: 0.25em;
+  --padding-inputs: 0.20em;
+  --opacity-input-disabled: 0.5;
+}
+
+*,*::before,*::after{
+  box-sizing:inherit;
+}
+
+:read-only {
+  cursor: default;
+}
+
+:disabled {
+  opacity: var(--opacity-input-disabled);
+  cursor: not-allowed;
+}
+
+html {
+  margin:0;
+  padding:0;
+}
+
+body {
+  color-scheme: light;
+}
+
 .App {
   text-align: center;
 }
@@ -26,6 +56,39 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {  
+  body {
+    /* Very short durations means JavaScript that relies on events still works */
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 0.8rem;
+  }
 }
 
 @keyframes App-logo-spin {

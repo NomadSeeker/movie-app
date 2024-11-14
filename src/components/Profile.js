@@ -5,10 +5,12 @@ const Profile = () => {
     console.log(user);
     return (
         <>
-            <div>
-
-                <h1>{user.name}</h1>
-                <p>{}</p>
+               
+            <div className=" h-screen text-left text-white mt-10 [&>p]:my-4 mx-4">
+                <h1 className="">Account information: </h1>
+                <p>Name: {user.name}</p>
+                <p>email: {user.email}</p>
+            
 
             </div>
         </>

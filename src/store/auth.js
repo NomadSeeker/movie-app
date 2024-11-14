@@ -57,7 +57,8 @@ const authSlice = createSlice({
 
 export const createUser = (userData) => {
     return async (dispatch) => {
-       dispatch(authActions.setMessage({message: ''}));
+        dispatch(authActions.setMessage({message: ''}));
+        dispatch(authActions.setError({error: ''}));
 
         const sendData = async() => {
             const response = await saveUser(userData);

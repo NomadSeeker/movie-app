@@ -2,8 +2,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link, redirect, useNavigate}  from 'react-router-dom';
 
 import {loginUser} from '../store/auth';
+import '../style/header.css';
 
-function LoginModal({loginRef, onCloseLogin}) {
+function LoginModal({loginRef, onCloseLogin, onSignUp}) {
     const dispatch = useDispatch();
 
     async function  handleSubmit (e) {
@@ -17,26 +18,26 @@ function LoginModal({loginRef, onCloseLogin}) {
 
     return(
         <>
-            <dialog id="login" ref={loginRef}>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <p>
+            <dialog id="login" ref={loginRef} className='backdrop-blur-2xl bg-slate-800/30 p-12'>
+                <form onSubmit={handleSubmit} className='mb-5'>
+                    <div className='flex flex-col text-left'>
+                      
                             <label htmlFor='email'>User name: </label>
-                            <input type='text' id='email' name='email' placeholder='email' />
-                        </p>
-                        <p>
+                            <input type='text' id='email' name='email' placeholder='email' required/>
+                       
+                       
                             <label htmlFor="password">Password: </label>
-                            <input type='password' id='password' name='password' placeholder='password' />
-                        </p>
+                            <input type='password' id='password' name='password' placeholder='password' required/>
+                     
                        
                     </div>
-                    <div>
-                        <button type='submit'>Log in</button>
-                        <button onClick={onCloseLogin}>Close</button>
+                    <div className='flex justify-between'>
+                        <button type='submit' className='submit'>Log in</button>
+                        <button className='cancel' onClick={onCloseLogin}>Close</button>
                     </div>
                    
                 </form>
-                <Link to='/SignUp'>Sign Up</Link>
+                <input className='text-white' type='button' value='Sign up' onClick={onSignUp} />
             </dialog>
         </>
     );

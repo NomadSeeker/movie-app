@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const moviesRoutes = require('./routes/movies');
 const userRoutes = require('./routes/user-routes');
+const HttpError = require('./models/http-error');
 
+dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
@@ -13,6 +16,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+    console.log(`Environment var: ${process.env.SECRET}`);
     next();
 });
 

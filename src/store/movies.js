@@ -75,7 +75,8 @@ export function getNewMoviesData() {
         try{
 
             const movieData = await getData();
-            dispatch(moviesActions.setMovies({movies: movieData[1].movies || []}));
+            console.log(movieData);
+            dispatch(moviesActions.setMovies({movies: movieData || []}));
 
         }catch(error) {
 

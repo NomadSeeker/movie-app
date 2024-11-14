@@ -4,6 +4,7 @@ import {Link, redirect, useNavigate}  from 'react-router-dom';
 
 import LoginModal from './LoginModal';
 import SignUp from './SignUp';
+import '../style/header.css';
 
 export default function Header() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Header() {
     function searchMovie(e) {
         e.preventDefault();
         const query = inputRef.current.value;
-
+        inputRef.current.value = '';
         navigate(`/findMovie/${query}`);
         
     }
@@ -31,18 +32,25 @@ export default function Header() {
         loginRef.current.close();
     }
 
+    function handleSignUp() {
+        loginRef.current.close();
+        navigate('/SignUp');
+    }
+
 
     return (
         <>
         
         <header >
-            <div className='grid grid-cols-1 space-y-3 md:grid-cols-3 md:space-y-1'>
+            <div className='flex flex-col justify-center md:flex-row md:justify-between md:items-baseline md:space-y-1 text-white items-center py-2 w-full bg-neutral-800' >
                 <div>
-                    <h1>Movie App or Logo</h1>
+                    <h1 className='pb-2 md:px-1.5'>
+                        <Link to='/'>Movie App</Link>
+                    </h1>
                 </div>
-                <div>
+                <div className='pb-2'>
                 <form onSubmit={searchMovie}>
-                                <input className='border border-gray-500 rounded-md'
+                                <input className='border border-gray-500 rounded-md w-80 h-10 text-black'
                                     ref={inputRef}
                                     type='text' 
                                     placeholder=' Search Movie...'
@@ -55,16 +63,26 @@ export default function Header() {
                 <div>
                     <nav>
                            
-                            <ul>
-                                <div className='grid grid-cols-1 sm:grid-cols-4 space-y-1'>
-                                <li>
+                            <ul >
+                                <div className='flex flex-col md:flex-row nav-items'>
+                                <li className='hover:text-teal-400'>
                                     <Link to='/'>Home </Link>
-                                </li>
-                                <li>
+                                </li >
+                                {isLoggedIn && <li className='hover:text-teal-400'>
                                     <Link to='/myFavorites'>My List</Link>
-                                </li>
+                                </li>}
                                 {
-                                    isLoggedIn ? <li>Log out</li> : (<li>
+                                    isLoggedIn ? (
+                                            <>
+                                                <li className='hover:text-teal-400'>Log out</li> 
+                                                <li className='hover:text-teal-400'>
+                                                <Link to='myProfile'>
+                                                    Profile
+                                                </Link>
+                                                </li>
+                                            </>
+   
+                                        ): (<li className='hover:text-teal-400'>
                                         <button onClick={handleLogin}>Log in</button>
                                         </li>)
                                 } 
@@ -72,12 +90,7 @@ export default function Header() {
                                     <Link to='SignUp' >Sign Up</Link>
                                 </li> */}
                              
-                                <li>
-                                    <Link to='myProfile'>
-                                        Profile
-                                    </Link>
-                                    
-                                </li>
+                                
                                 </div>
                                
                                 
@@ -90,7 +103,7 @@ export default function Header() {
        
              
             
-            <LoginModal loginRef={loginRef} onCloseLogin={handleCloseLogin}/>
+            <LoginModal loginRef={loginRef} onCloseLogin={handleCloseLogin} onSignUp={handleSignUp}/>
         </>
     );
 }

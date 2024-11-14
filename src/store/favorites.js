@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {getMoviesByUser, dbGetRequest} from '../http';
+import {getMoviesByUser, dbGetRequest, dbPostRequest} from '../http';
 
 const favoritesSlice = createSlice({
     name: 'whishlist',
@@ -33,7 +33,7 @@ export const getFavoriteMovies = (userId) => {
     return async (dispatch) => {
 
         const getMovies = async () => {
-            const url = `movies/favoriteMovies/66bc0557812ddaeccd235719`;
+            const url = `movies/favoriteMovies/${userId}`;
             const data = await dbGetRequest(url);
             return data.movies;
         }
@@ -49,3 +49,28 @@ export const getFavoriteMovies = (userId) => {
        
     }
 };
+
+export const addFavorite = ({title, poster_path, movieId, userId}) => {
+    return async (dispatch) => {
+
+        const saveFavorite = async () => {
+            const url = 'movies/saveFavoriteMovie';
+            const data = {title, poster_path, movieId, userId};
+            const headers = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            const response = await dbPostRequest(url, data, headers);
+            return response;
+        }
+
+        try {
+            const responseData = await saveFavorite();
+            console.log(responseData);
+        }catch(err) {
+            dispatch(favoritesActions.setError({error: err.message}));
+        }
+    }
+}

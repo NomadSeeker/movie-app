@@ -5,6 +5,10 @@ import MovieList from './MovieList';
 import { getNewMoviesData } from '../store/movies';
 
 
+import '../style/home.css';
+import HeroCarousel from './HeroCarousel';
+
+
 
 
 const Home = () => {
@@ -24,11 +28,25 @@ const Home = () => {
     if(error) {
         return <p>{error}</p>
     }
+
+    if(movies.length <= 0) {
+        return <p>No movies were found.</p>
+    }
    
 
     return (
         <>
-            {movies.length > 0 && <MovieList movies={movies} title={'New Releases'} />}
+            <section>
+                {movies.length > 0 && (<HeroCarousel movies={movies[0].movies}/>)} 
+            </section>
+            <section>
+                
+                {movies.length > 0 && (
+                        movies.map(collection => <MovieList movies={collection.movies} title={collection.title} />)
+                    )
+                }
+            </section>
+            
         </>
     )
 

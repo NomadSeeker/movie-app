@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
     title: {type: String, require: true},
-    release_date: {type: String, require: true},
-    genre: {type: String, require: true},
-    userId: {type: mongoose.Types.ObjectId, require: true, ref: 'User'}
+    movieId: {type: Number, require: true},
+    userId: {type: mongoose.Types.ObjectId, require: true, ref: 'User'},
+    poster_path: {type: String, require: true}
 });
 
 module.exports = mongoose.model('Movie', movieSchema);

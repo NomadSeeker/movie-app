@@ -1,0 +1,92 @@
+.nav-items > li {
+    margin: 0 10px;
+    padding: 8px 0;
+}
+
+dialog::backdrop {
+    background-color: rgba(108, 104, 104, 0.718);
+}
+
+dialog {
+    border-radius: 15px;
+}
+
+ label {
+    display: block;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+
+input[type='text'], input[type='password'] {
+    padding: var(--padding-inputs);
+    border: var(--width-input-border) solid rgb(54, 53, 53);
+    border-radius: var(--radius-inputs);
+    margin-bottom: 2em;
+    width: 250px;
+    max-width: 100%;
+    max-height: 40px;
+    background-color: #f9f5f5;
+    transition: all 0.5s ease;
+}
+
+input[type='text']:focus, input[type='password']:focus {
+    outline: none;
+    border: 2px solid rgb(16, 192, 192);
+    outline: 0;
+}
+
+input[type='text']:hover, input[type='password']:hover, input[type='text']:active, input[type='password']:active {
+    border: 2px solid rgb(134, 132, 132) #444;
+}
+
+.submit {
+    background-color: rgb(16, 156, 156);
+    border-color: rgb(16, 192, 192);
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    transition: all 0.5s ;
+    color: white;
+}
+
+.submit:hover {
+    background-color: rgb(19, 221, 221);
+    color: black;
+    cursor: pointer;
+    color: black;
+}
+
+.submit:active {
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
+.cancel {
+    background-color: rgb(138, 4, 4);
+    border-color: rgb(138, 4, 4);
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    transition: all 0.5s ;
+    color: white;
+}
+
+.cancel:hover {
+    background-color: rgb(182, 35, 35);
+    color: black;
+    cursor: pointer;
+    color: black;
+}
+
+.cancel:active {
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
+input[type='button'] {
+    font-size: smaller;
+    text-decoration: underline;
+}
+
+input[type='button']:hover {
+    color:rgb(19, 221, 221);
+    cursor: pointer;
+}

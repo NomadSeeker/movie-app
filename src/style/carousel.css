@@ -1,0 +1,15 @@
+.movie-item {
+    width: 70% !important;
+    transition: transform 1s;
+}
+
+.carousl {
+    position:relative;
+    left: 5%;
+}
+
+.crsl-img:hover {
+    transform: scale(1.1);
+    
+}
+

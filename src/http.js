@@ -110,6 +110,6 @@ export const dbPostRequest = async (url, data=null, headers) => {
     if(response.status !== 200 || !response)
         throw new Error('An error ocurred while posting the data');
 
-    console.log(response);
+
     return response.data;
 }

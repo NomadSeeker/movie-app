@@ -5,16 +5,6 @@ const HttpError = require('../models/http-error');
 const Movie = require('../models/movie');
 const User = require('../models/user');
 
-const movies = [
-    {
-        _id:'1',
-        title: 'The Dark Knight',
-        release_date: '2008',
-        genre: 'Action',
-        userId: 'u1'
-    }
-];
-
 const getMoviesByUserId = async (req, res, next) => {
 
     const userId = req.params.uid;
@@ -37,13 +27,13 @@ const saveMovie = async (req, res, next) => {
     if(!errors.isEmpty())
         return next(new HttpError('Invalid movie information, check your input data.', 422));
 
-    const {title, release_date, genre, userId} = req.body;
+    const {title, movieId, userId, poster_path} = req.body;
     let user;
     let newMovie = new Movie({
         title,
-        release_date,
-        genre,
-        userId
+        movieId,
+        userId,
+        poster_path
     });
 
     try {
@@ -53,7 +43,7 @@ const saveMovie = async (req, res, next) => {
     }
 
     if(!user)
-        return next(new HttpError('Couldn\'t find a user with that id. Error: '+err, 404));
+        return next(new HttpError('Couldn\'t find a user with that id. Error: ', 404));
 
     try {
         const session = await mongoose.startSession();
