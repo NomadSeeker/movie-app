@@ -108,9 +108,9 @@ export const dbGetRequest = async (url, data = null, headers = {}) => {
    
 };
 
-export const dbPostRequest = async (url, data=null, headers={ headers: {'Content-Type:': 'application/json'}}) => {
+export const dbPostRequest = async (url, data=null) => {
 
-    const response = await axios.post(`${baseUrl}/api/${url}`, data, headers);
+    const response = await axios.post(`${baseUrl}/api/${url}`, data, {headers: {'Content-Type': 'application/json'}});
 
     if(response.status !== 200 || !response)
         throw new Error('An error ocurred while posting the data');
