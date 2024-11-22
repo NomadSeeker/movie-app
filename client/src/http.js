@@ -108,7 +108,7 @@ export const dbGetRequest = async (url, data = null, headers = {}) => {
    
 };
 
-export const dbPostRequest = async (url, data=null, headers={'Content-Type:': 'application/json'}) => {
+export const dbPostRequest = async (url, data=null, headers={ headers: {'Content-Type:': 'application/json'}}) => {
 
     const response = await axios.post(`${baseUrl}/api/${url}`, data, headers);
 
