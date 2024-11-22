@@ -98,7 +98,7 @@ export const getMoviesByUser = async (userId) => {
     return response;
 };
 
-export const dbGetRequest = async (url, data = null, headers = {'Content-Type:': 'application/json'}) => {
+export const dbGetRequest = async (url, data = null, headers = {}) => {
 
     const response = await axios.get(`${baseUrl}/api/${url}`, data, headers);
     if(response.status !== 200 || !response)
@@ -108,7 +108,7 @@ export const dbGetRequest = async (url, data = null, headers = {'Content-Type:':
    
 };
 
-export const dbPostRequest = async (url, data=null, headers) => {
+export const dbPostRequest = async (url, data=null, headers={'Content-Type:': 'application/json'}) => {
 
     const response = await axios.post(`${baseUrl}/api/${url}`, data, headers);
 
