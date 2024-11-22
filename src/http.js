@@ -3,6 +3,7 @@ import axios from 'axios';
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiHost = process.env.REACT_APP_API_HOST;
 const apiUrl = process.env.REACT_APP_API_URL;
+const baseUrl = 'http://localhost:5000';
 
 export async function getNewReleasedMovies() {
 
@@ -65,7 +66,7 @@ export async function getSearchedMovie(title) {
 
 export const saveUser = async (userData) => {
 
-    const response = await axios.post('http://localhost:5000/api/users/signup', userData, {
+    const response = await axios.post(`${baseUrl}/api/users/signup`, userData, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -77,7 +78,7 @@ export const saveUser = async (userData) => {
 };
 
 export const getUserDB = async (userId) => {
-    const response = await axios.get(`http://localhost:5000/api/users/getAccount/${userId}`);
+    const response = await axios.get(`${baseUrl}/api/users/getAccount/${userId}`);
 
     if(response.status !== 200) {
         throw new Error('An error ocurred');
@@ -88,7 +89,7 @@ export const getUserDB = async (userId) => {
 
 export const getMoviesByUser = async (userId) => {
     console.log(userId);
-    const response = await axios.get(`http://localhost:5000/api/movies/favoriteMovies/${userId}`);
+    const response = await axios.get(`${baseUrl}/api/movies/favoriteMovies/${userId}`);
    
     if(response.status !== 200)
         throw new Error();
@@ -98,7 +99,7 @@ export const getMoviesByUser = async (userId) => {
 
 export const dbGetRequest = async (url, data = null, headers = {}) => {
 
-    const response = await axios.get('http://localhost:5000/api/'+url, data, headers);
+    const response = await axios.get(`${baseUrl}/api/${url}`, data, headers);
     if(response.status !== 200 || !response)
         throw new Error('An error ocurred while resquesting the data');
 
@@ -108,7 +109,7 @@ export const dbGetRequest = async (url, data = null, headers = {}) => {
 
 export const dbPostRequest = async (url, data=null, headers) => {
 
-    const response = await axios.post(`http://localhost:5000/api/${url}`, data, headers);
+    const response = await axios.post(`${baseUrl}/api/${url}`, data, headers);
 
     if(response.status !== 200 || !response)
         throw new Error('An error ocurred while posting the data');
