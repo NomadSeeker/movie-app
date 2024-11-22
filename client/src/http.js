@@ -3,7 +3,8 @@ import axios from 'axios';
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiHost = process.env.REACT_APP_API_HOST;
 const apiUrl = process.env.REACT_APP_API_URL;
-const baseUrl = 'http://localhost:5000';
+// const baseUrl = 'http://localhost:5000';
+const baseUrl = 'movies-app-brown-one.vercel.app';
 
 export async function getNewReleasedMovies() {
 
