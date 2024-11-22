@@ -1,13 +1,16 @@
 import axios from 'axios';
 
+const apiKey = process.env.REACT_APP_API_KEY;
+const apiHost = process.env.REACT_APP_API_HOST;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export async function getNewReleasedMovies() {
 
-    const response = await axios.get('https://movies-api14.p.rapidapi.com/home',
+    const response = await axios.get(`${apiUrl}/home`,
         {    
             headers: {
-                'X-RapidAPI-Key': '595b990849msh5f80e0a3d5e9e7dp1684a9jsn81d2740d04d7',
-                'X-RapidAPI-Host': 'movies-api14.p.rapidapi.com'
+                'X-RapidAPI-Key': apiKey,
+                'X-RapidAPI-Host': apiHost
             }
         });
 
@@ -18,12 +21,12 @@ export async function getNewReleasedMovies() {
 export async function getMovieDetails(id) {
 
    
-    const response = await axios.get(`https://movies-api14.p.rapidapi.com/movie/${id}`,
+    const response = await axios.get(`${apiUrl}/movie/${id}`,
     {    
         
         headers: {
-            'X-RapidAPI-Key': '595b990849msh5f80e0a3d5e9e7dp1684a9jsn81d2740d04d7',
-            'X-RapidAPI-Host': 'movies-api14.p.rapidapi.com'
+            'X-RapidAPI-Key': apiKey,
+            'X-RapidAPI-Host': apiHost
         }
     });
 
@@ -38,14 +41,14 @@ export async function getMovieDetails(id) {
 
 export async function getSearchedMovie(title) {
 
-    const response = await axios.get('https://movies-api14.p.rapidapi.com/search',
+    const response = await axios.get(`${apiUrl}/search`,
         {
             params: {
                 query: title
             },
             headers: {
-                'x-rapidapi-key': '595b990849msh5f80e0a3d5e9e7dp1684a9jsn81d2740d04d7',
-                'x-rapidapi-host': 'movies-api14.p.rapidapi.com'
+                'x-rapidapi-key': apiKey,
+                'x-rapidapi-host': apiHost
             }
         });
         console.log(response.data.contents.length);

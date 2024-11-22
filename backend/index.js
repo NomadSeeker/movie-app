@@ -16,7 +16,6 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
-    console.log(`Environment var: ${process.env.SECRET}`);
     next();
 });
 
@@ -38,4 +37,4 @@ app.use((error, req, res, next) => {
 
 });
 
-mongoose.connect('mongodb+srv://nomadseeker24:8BJuci8kVJvpAKwH@cluster0.3g2bz.mongodb.net/movies?retryWrites=true&w=majority&appName=Cluster0').then(() => app.listen(5000)).catch(err => console.log(err));
+mongoose.connect(process.env.DB_URL).then(() => app.listen(parseInt(process.env.PORT))).catch(err => console.log(err));
